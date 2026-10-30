@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 See [BUSINESS_CONTEXT.md](./BUSINESS_CONTEXT.md) for the QRLabs 3D business brief, website goals, WhatsApp contact, and content guidance.
 
+See [DESIGN_DIRECTION.md](./DESIGN_DIRECTION.md) for the current visual direction, interaction and content decisions, rejected explorations, and the provisional gallery layout.
+
 ## Website
 
 The homepage is a Brazilian Portuguese portfolio and introduction to QRLabs 3D, with WhatsApp quotation links. It is statically rendered with Next.js and uses plain responsive CSS. A separately loaded Three.js scene animates the hero.
