@@ -1,0 +1,18 @@
+{
+  "generator": "Built-in image_gen",
+  "purpose": "Decorative service illustrations; original project photographs remain unchanged.",
+  "images": [
+    {
+      "path": "public/images/services/decoracao.png",
+      "prompt": "Use case: stylized-concept. Asset type: small decorative 3D product cutout for a Brazilian 3D-print studio website service card. Create one polished, charming, tactile 3D illustration with matte printed-plastic material, gently rounded edges, faint layer lines, soft studio lighting from upper left. Square composition, isolated object centered, entire silhouette visible, filling 85% of the image. Three-quarter view, slightly elevated. Actual transparent background and alpha, no backdrop, no floor plane, no enclosing tile, no pedestal unless part of the described object, no lettering, no watermark. Clean readable silhouette at 100px display size. Subject: one cute red toadstool decoration with a broad red domed cap, five raised ivory round spots and a short thick ivory stem with a slightly flared base. A decorative 3D-printed mushroom, no face, no grass, no extra props. Rich red and warm white."
+    },
+    {
+      "path": "public/images/services/miniaturas.png",
+      "prompt": "Use case: stylized-concept. Asset type: small decorative 3D product cutout for a Brazilian 3D-print studio website service card. Create one polished, charming, tactile 3D illustration with matte printed-plastic material, gently rounded edges, faint layer lines, soft studio lighting from upper left. Square composition, isolated object centered, entire silhouette visible, filling 85% of the image. Three-quarter view, slightly elevated. Actual transparent background and alpha, no backdrop, no floor plane, no enclosing tile, no pedestal unless part of the described object, no lettering, no watermark. Clean readable silhouette at 100px display size. Subject: a miniature fantasy broom and a short magic wand arranged together as a compact collectible set. Broom has a thick curved dark brown wooden-looking handle and clustered warm golden bristles, wand is a tapered dark plum-brown rod with a subtly carved handle. Broom angled upward diagonally and wand beside it, compact upright composition, both objects fully visible. No magic sparks, no characters, no text, no base."
+    },
+    {
+      "path": "public/images/services/personalizados.png",
+      "prompt": "Use case: stylized-concept. Asset type: small decorative 3D product cutout for a Brazilian 3D-print studio website service card. Create one polished, charming, tactile 3D illustration with matte printed-plastic material, gently rounded edges, faint layer lines, soft studio lighting from upper left. Square composition, isolated object centered, entire silhouette visible, filling 85% of the image. Three-quarter view, slightly elevated. Actual transparent background and alpha, no backdrop, no floor plane, no enclosing tile, no pedestal unless part of the described object, no lettering, no watermark. Clean readable silhouette at 100px display size. Subject: a freestanding small business countertop display made of turquoise-blue and ivory 3D-printed plastic. Rounded upright rectangular ivory plaque on a chunky blue L-shaped foot; blue rim, stylized navy QR-like square pattern centered on the plaque with three corner finder squares, a small raised purple heart below. This is an illustrative nonfunctional QR pattern. No words, no logos, no extra props."
+    }
+  ]
+}
