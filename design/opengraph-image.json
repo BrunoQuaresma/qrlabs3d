@@ -1,0 +1,12 @@
+{
+  "tool": "built-in imagegen",
+  "created": "2026-10-31",
+  "prompt": "Create a polished Open Graph social sharing image for QRLabs 3D, a small custom 3D printing atelier in Recife, Brazil. Landscape aspect ratio 1.90476:1, intended final 1200x630. Use case: ads-marketing. Image 1 is a brand logo reference: reproduce its precise three-facet triangular silhouette and cyan, magenta and orange colors for a small logo at upper left, without its white square. Image 2 is a reference for the turquoise 3D-printed boat and tactile fine filament layer texture.\n\nArt direction: refined warm editorial design, soft near-white cream background (#fbf9fb), deep plum-black typography (#221925), generous whitespace. Left 58% is typography, right 42% a beautifully lit sculptural arrangement of small 3D-printed objects: a turquoise benchy boat in the foreground, a coral-orange fluted vase with no plants, a small lavender organic sculptural loop behind it. Objects have realistic fine horizontal filament layers, matte material, soft studio contact shadows on the same cream ground, three-quarter perspective, no platforms or cards. Arrange elegantly with clear silhouette and breathing room. No printer machine, no human, no confetti, no badges.\n\nTop left compact logo and clean sans-serif wordmark text exactly \"QRLabs 3D\". Large striking headline on the left in elegant expressive editorial serif, on exactly two lines: \"Da sua ideia.\" then \"Do seu jeitinho.\" First line deep plum-black and second line italic rich violet (#6c1880). Keep headline fully within the left 58%, never overlapping the still life. Under headline, smaller clean sans-serif text exactly \"Impressão 3D personalizada.\" Bottom left clean small sans-serif text exactly \"Feita em Recife, com carinho.\" All text Portuguese with exact spelling and accents. Strong legibility at thumbnail size. At least 64px safe padding on all edges in final 1200x630 coordinates. Only these text strings. Sophisticated, friendly and tactile, like a thoughtfully designed independent creative studio campaign. No border, no browser chrome, no watermark.",
+  "references": [
+    "public/images/logo.jpg",
+    "public/images/decorations/printed-boat.png"
+  ],
+  "output": "app/opengraph-image.jpg",
+  "width": 1200,
+  "height": 630
+}

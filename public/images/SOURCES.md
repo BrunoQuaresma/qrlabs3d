@@ -15,3 +15,5 @@ The favicon uses the profile image. The original downloaded JPG files retain the
 `atelie-portrait-v2.png` is an AI-edited presentation portrait derived from `atelie.jpg`, with improved lighting and a composed atelier background. The edit replaces the generated printer with a Bambu Lab shipping box and includes a user-requested adjustment to the body silhouette. The original photo and the earlier `atelie-portrait.png` version remain unchanged. Prompts and provenance are recorded in `design/atelier-portrait.json`.
 
 Generated decorative illustrations are documented in `design/service-illustrations.json` and `design/printing-decorations.json`. The logo keychain uses `logo.jpg` as its reference.
+
+`app/opengraph-image.jpg` is the AI-generated social sharing image, created on October 31, 2026 with the built-in image generator using `logo.jpg` and `decorations/printed-boat.png` as references. The still life is illustrative. The final 1200×630 JPEG and its Portuguese headline match the site's branding. The full prompt and provenance are recorded in `design/opengraph-image.json`.
