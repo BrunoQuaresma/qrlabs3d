@@ -1,4 +1,5 @@
 :root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   color-scheme: light;
   /* Logo samples; the remaining steps are generated in OKLCH and stored as hex. */
   --violet-500: #bf3ae1;
@@ -106,6 +107,65 @@ a:focus-visible {
 }
 .site-shell {
   overflow: clip;
+}
+[data-reveal] {
+  --reveal-delay: 0ms;
+  --reveal-rest-transform: rotate(0deg);
+  --reveal-scale: 1;
+}
+[data-reveal-order="1"] { --reveal-delay: 60ms; }
+[data-reveal-order="2"] { --reveal-delay: 120ms; }
+[data-reveal-order="3"] { --reveal-delay: 180ms; }
+[data-reveal="image"] { --reveal-scale: 0.97; }
+.about-photo[data-reveal] { --reveal-rest-transform: rotate(-3deg); }
+[data-reveal-state="pending"] {
+  opacity: 0;
+}
+[data-reveal="intro"],
+[data-reveal-state="visible"] {
+  animation: section-enter 600ms var(--ease-out) var(--reveal-delay) backwards;
+}
+[data-reveal-state="visible"] {
+  animation-delay: calc(120ms + var(--reveal-delay));
+}
+[data-reveal-state="complete"] {
+  animation: none;
+}
+@keyframes section-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(var(--reveal-scale)) var(--reveal-rest-transform);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) var(--reveal-rest-transform);
+  }
+}
+@keyframes section-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (max-width: 900px) {
+  .project [data-reveal],
+  .steps > [data-reveal],
+  .about-copy[data-reveal] {
+    --reveal-delay: 0ms;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal="intro"],
+  [data-reveal-state="visible"] {
+    animation-name: section-fade;
+    animation-duration: 180ms;
+    animation-delay: 0ms;
+  }
+  [data-reveal-state="complete"] { animation: none; }
+}
+@media print {
+  [data-reveal] {
+    opacity: 1;
+    animation: none;
+  }
 }
 .site-shell::before {
   content: "";

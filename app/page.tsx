@@ -1,5 +1,6 @@
 import Image from "next/image";
 import PrinterHero from "./components/printer-hero";
+import ScrollReveals from "./components/scroll-reveals";
 
 const instagram = "https://www.instagram.com/qrlabs3d/";
 const whatsapp = `https://wa.me/5581982742579?text=${encodeURIComponent("Olá! Vim pelo site da QRLabs 3D e gostaria de um orçamento para um projeto personalizado.")}`;
@@ -50,9 +51,9 @@ function QuoteButton() {
     </a>
   );
 }
-function InstagramLink({ className = "" }: { className?: string }) {
+function InstagramLink({ className = "", revealOrder }: { className?: string; revealOrder?: number }) {
   return (
-    <a className={`button button-outline ${className}`} href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Ver Instagram da QRLabs 3D (nova aba)">
+    <a className={`button button-outline ${className}`} data-reveal={revealOrder !== undefined || undefined} data-reveal-order={revealOrder} href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Ver Instagram da QRLabs 3D (nova aba)">
       <InstagramIcon />
       <span>Ver Instagram</span>
     </a>
@@ -106,22 +107,22 @@ export default function Home() {
           <Brand />
           <span className="site-location">Recife, Pernambuco</span>
         </header>
-        <main id="conteudo">
+        <ScrollReveals>
           <section className="hero wrap" aria-labelledby="hero-title">
             <div className="hero-copy">
-              <p className="eyebrow hero-eyebrow">
+              <p className="eyebrow hero-eyebrow" data-reveal="intro">
                 Um pequeno ateliê. Muitas possibilidades.
               </p>
-              <h1 id="hero-title">
+              <h1 id="hero-title" data-reveal="intro" data-reveal-order="1">
                 <span>Da sua ideia.</span>
                 <span className="hero-title-accent">Do seu jeitinho.</span>
               </h1>
-              <p className="hero-description">
+              <p className="hero-description" data-reveal="intro" data-reveal-order="2">
                 Impressão 3D personalizada, feita em Recife.
                 <br />
                 Conte sua ideia. Vamos criar juntos.
               </p>
-              <div className="hero-actions">
+              <div className="hero-actions" data-reveal="intro" data-reveal-order="3">
                 <QuoteButton />
               </div>
             </div>
@@ -136,17 +137,17 @@ export default function Home() {
           >
             <div className="section-heading">
               <div>
-                <p className="eyebrow">JÁ SAIU DA IMAGINAÇÃO</p>
-                <h2 id="creations-title">
+                <p className="eyebrow" data-reveal>JÁ SAIU DA IMAGINAÇÃO</p>
+                <h2 id="creations-title" data-reveal data-reveal-order="1">
                   Pequenas peças.
                   <br />
                   Grandes <em>possibilidades.</em>
                 </h2>
               </div>
-              <InstagramLink className="portfolio-social" />
+              <InstagramLink className="portfolio-social" revealOrder={2} />
             </div>
             <div className="project-grid">
-              {projects.map((project) => (
+              {projects.map((project, index) => (
                 <a
                   className={`project project-${project.illustration}`}
                   key={project.image}
@@ -155,7 +156,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   aria-label={`${project.name} — ver projeto no Instagram (nova aba)`}
                 >
-                  <div className="project-image">
+                  <div className="project-image" data-reveal data-reveal-order={index}>
                     <Image
                       className="project-image-photo"
                       src={`/images/${project.image}.jpg`}
@@ -166,13 +167,13 @@ export default function Home() {
                   </div>
                   <div className="project-caption">
                     <div className="project-copy">
-                      <h3>
+                      <h3 data-reveal data-reveal-order={index}>
                         <span className="project-title-base">{project.name}</span>
                         <span className="project-title-hover" aria-hidden="true">
                           {project.name}
                         </span>
                       </h3>
-                      <p>{project.description}</p>
+                      <p data-reveal data-reveal-order={index + 1}>{project.description}</p>
                     </div>
                   </div>
                 </a>
@@ -185,7 +186,7 @@ export default function Home() {
             aria-labelledby="process-title"
           >
             <div className="wrap section-space">
-              <div className="section-heading process-heading">
+              <div className="section-heading process-heading" data-reveal>
                 <div>
                   <p className="eyebrow">DO PRIMEIRO “OI” À SUA PEÇA</p>
                   <h2 id="process-title">
@@ -201,7 +202,7 @@ export default function Home() {
                 </p>
               </div>
               <ol className="steps">
-                <li>
+                <li data-reveal>
                   <span className="step-number" aria-hidden="true">01</span>
                   <div className="step-copy">
                     <h3>Conte sua ideia</h3>
@@ -211,7 +212,7 @@ export default function Home() {
                     </p>
                   </div>
                 </li>
-                <li>
+                <li data-reveal data-reveal-order="1">
                   <span className="step-number" aria-hidden="true">02</span>
                   <div className="step-copy">
                     <h3>A gente combina os detalhes</h3>
@@ -221,7 +222,7 @@ export default function Home() {
                     </p>
                   </div>
                 </li>
-                <li>
+                <li data-reveal data-reveal-order="2">
                   <span className="step-number" aria-hidden="true">03</span>
                   <div className="step-copy">
                     <h3>A ideia ganha forma</h3>
@@ -239,7 +240,7 @@ export default function Home() {
             id="sobre"
             aria-labelledby="about-title"
           >
-            <div className="about-photo">
+            <div className="about-photo" data-reveal="image">
               <Image
                 src="/images/paula-ribeiro-founder-v2.png"
                 alt="Paula Ribeiro, fundadora da QRLabs 3D, sorrindo em um ateliê criativo"
@@ -251,7 +252,7 @@ export default function Home() {
                 Paula Ribeiro - Fundadora de QLabs 3D
               </span>
             </div>
-            <div className="about-copy">
+            <div className="about-copy" data-reveal data-reveal-order="1">
               <p className="eyebrow">PRAZER, QRLABS 3D</p>
               <h2 id="about-title">
                 Tecnologia nas peças.
@@ -271,17 +272,17 @@ export default function Home() {
           <section className="contact-section" aria-labelledby="contact-title">
             <div className="wrap contact-inner">
               <PrintDecoration item="logo-keychain" className="print-keychain" />
-              <p className="eyebrow">VAMOS TIRAR ESSA IDEIA DO PAPEL?</p>
-              <h2 id="contact-title">
+              <p className="eyebrow" data-reveal>VAMOS TIRAR ESSA IDEIA DO PAPEL?</p>
+              <h2 id="contact-title" data-reveal data-reveal-order="1">
                 Você imagina.
                 <br />A gente dá <em>forma.</em>
               </h2>
-              <p>Conta pra gente o que você quer criar.</p>
-              <QuoteButton />
+              <p data-reveal data-reveal-order="2">Conta pra gente o que você quer criar.</p>
+              <div data-reveal data-reveal-order="3"><QuoteButton /></div>
               <PrintDecoration item="printed-boat" className="print-boat" />
             </div>
           </section>
-        </main>
+        </ScrollReveals>
         <footer className="site-footer wrap">
           <Brand />
           <p>
