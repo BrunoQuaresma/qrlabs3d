@@ -172,6 +172,7 @@ a:focus-visible {
   vertical-align: baseline;
 }
 .site-location {
+  white-space: nowrap;
   font-size: 12px;
   color: var(--color-text-secondary);
 }
@@ -636,8 +637,8 @@ h2 em {
   }
 }
 @keyframes print-parallax-compact {
-  from { transform: translate3d(0, -8px, 0) rotate(-3deg); }
-  to { transform: translate3d(0, 8px, 0) rotate(3deg); }
+  from { transform: translate3d(0, -20px, 0) rotate(-4deg); }
+  to { transform: translate3d(0, 20px, 0) rotate(4deg); }
 }
 .contact-inner {
   position: relative;
@@ -750,14 +751,20 @@ h2 em {
 }
 @media (max-width: 900px) {
   .contact-inner {
-    padding-block-start: 128px;
+    padding-block: 144px;
   }
   .print-keychain,
   .print-boat {
     inline-size: 96px;
     block-size: 96px;
-    inset-block-start: 16px;
+  }
+  .print-keychain {
+    inset-block-start: 24px;
     inset-block-end: auto;
+  }
+  .print-boat {
+    inset-block-start: auto;
+    inset-block-end: 24px;
   }
   @supports (animation-timeline: view()) {
     @media (prefers-reduced-motion: no-preference) {
@@ -811,8 +818,6 @@ h2 em {
   .print-boat {
     inline-size: 80px;
     block-size: 80px;
-    inset-block-start: 18px;
-    inset-block-end: auto;
   }
   .print-keychain {
     inset-inline-start: 12px;
@@ -878,7 +883,7 @@ h2 em {
     font-size: 14px;
   }
   .contact-inner {
-    padding-block: 120px 54px;
+    padding-block: 128px;
   }
   .contact-inner h2 {
     font-size: 51px;
@@ -1015,7 +1020,6 @@ h2 em {
     font-size: 20px;
   }
   .site-location {
-    max-width: 80px;
     text-align: right;
     font-size: 10px;
   }
