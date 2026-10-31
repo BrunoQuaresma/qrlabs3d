@@ -297,7 +297,8 @@ a:focus-visible {
   align-items: center;
   gap: 9px;
 }
-.hero h1 {
+.hero-title {
+  text-wrap: balance;
   font-family: Georgia, "Times New Roman", serif;
   font-size: var(--text-hero-title);
   line-height: 1.02;
@@ -306,7 +307,7 @@ a:focus-visible {
   margin-block: 26px;
   overflow-wrap: break-word;
 }
-.hero h1 > span {
+.hero-title > span {
   display: block;
 }
 .hero-title-accent {
@@ -620,6 +621,36 @@ h2 em {
 }
 .about-social {
   margin-top: 0;
+}
+.faq {
+  border-top: 1px solid var(--color-border-subtle);
+}
+.faq-list {
+  max-width: 800px;
+}
+.faq-list details {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.faq-list summary {
+  padding-block: 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
+  cursor: pointer;
+}
+.faq-list summary::marker {
+  color: var(--color-accent-text);
+}
+.faq-list summary:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 4px;
+}
+.faq-list details p {
+  max-width: 70ch;
+  padding-block-end: 24px;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
 }
 .contact-section {
   background: var(--color-accent-soft);
@@ -1080,7 +1111,7 @@ h2 em {
   .hero-copy {
     padding-block: 36px 25px;
   }
-  .hero h1 {
+  .hero-title {
     margin-block: 20px;
   }
   .hero-actions {

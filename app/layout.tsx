@@ -1,21 +1,27 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { analyticsEnabled, gaDebugMode, gaMeasurementId } from "./lib/analytics";
+import { isPreviewDeployment, site } from "./lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "QRLabs 3D — Da sua ideia. Do seu jeitinho.",
-  description:
-    "Impressão 3D personalizada em Recife. Conheça as criações da QRLabs 3D e converse com a gente pelo WhatsApp sobre sua próxima ideia.",
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
+  robots: isPreviewDeployment
+    ? { index: false, follow: false }
+    : { index: true, follow: true, googleBot: { "max-image-preview": "large" } },
   openGraph: {
-    title: "QRLabs 3D — Da sua ideia. Do seu jeitinho.",
-    description:
-      "Ideias com forma, cor e afeto. Impressão 3D personalizada em Recife.",
+    title: site.title,
+    description: site.description,
+    siteName: site.name,
     locale: "pt_BR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
+    title: site.title,
+    description: site.description,
   },
 };
 

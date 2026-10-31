@@ -10,7 +10,7 @@ The gallery uses an editorial layout, with the owner's decisions recorded below.
 
 - Keep the 3D printing animation as the main hero visual and use the actual QRLabs 3D logo.
 - Use a simple top bar: logo and brand on the left, “Recife, Pernambuco” on the right, without navigation links.
-- Use the current hero copy and composition: an introductory eyebrow, the serif “Da sua ideia. Do seu jeitinho.” headline, supporting copy and quote action beside the printer. Stack the copy and printer on mobile. Omit the hero's bottom strip, creations link, and caption beneath the printer.
+- Preserve the hero composition: an introductory eyebrow, the large serif “Da sua ideia. Do seu jeitinho.” slogan, supporting copy and quote action beside the printer. The SEO update uses “Impressão 3D personalizada em Recife” as the visible eyebrow and semantic H1; the slogan remains a styled paragraph. Supporting copy names personalized gifts, miniatures, decoration, and pieces for a brand. Stack the copy and printer on mobile. Omit the hero's bottom strip, creations link, and caption beneath the printer.
 - Align the hero to the same content container as the other sections. Improve text and printer proportions within that width rather than widening the hero independently.
 - Give the headline, supporting text, and button label enough visual weight. Button text should remain proportionate to its surrounding padding on mobile as well as desktop.
 
@@ -62,9 +62,11 @@ On desktop (above 900px), floating print decorations travel from -64px to +64px 
 
 Present “DO PRIMEIRO ‘OI’ À SUA PEÇA” as an open sequence of steps, without individual card backgrounds or borders. Keep the introduction integrated with the section rather than using a tilted italic note and decorative arrow.
 
+Before the contact section, use native disclosure rows for ordering FAQs. Keep answers server-rendered, with restrained rules and existing typography. They explain customization, quote information, and how to discuss fulfillment without promising unconfirmed services.
+
 Use an editorial process layout and copy: a serif “Começa com uma conversa.” heading with the introductory sentence alongside it, three equal columns with large italic step numbers, thin rules, and text below. On mobile, stack the steps with numbers beside the copy. Retain the current section background gradient.
 
-Use an equal-column atelier layout, serif heading, and existing one-paragraph description. Keep the portrait free of the filament spool decoration. The photo caption reads “Paula Ribeiro - Fundadora de QLabs 3D”. The current portrait is generated from five owner-provided identity references, with natural lighting and a quiet creative atelier background. Preserve previous portraits and keep the prompt and provenance in `design/paula-founder-portrait.json`.
+Use an equal-column atelier layout, serif heading, and existing one-paragraph description. Keep the portrait free of the filament spool decoration. The photo caption reads “Paula Ribeiro - Fundadora de QRLabs 3D”. The current portrait is generated from five owner-provided identity references, with natural lighting and a quiet creative atelier background. Preserve previous portraits and keep the prompt and provenance in `design/paula-founder-portrait.json`.
 
 ## Exploration history
 

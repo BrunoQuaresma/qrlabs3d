@@ -8,7 +8,6 @@ export default function PrinterHero() {
   const host = useRef<HTMLDivElement>(null);
   const scene = useRef<PrinterScene | null>(null);
   const [ready, setReady] = useState(false);
-  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     const container = host.current;
@@ -25,7 +24,6 @@ export default function PrinterHero() {
       scene.current?.dispose();
       scene.current = null;
       setReady(false);
-      setFailed(true);
     };
     // Load WebGL separately so the page copy and quote button render immediately.
     import("./printer-scene")
@@ -44,7 +42,6 @@ export default function PrinterHero() {
           scene.current?.dispose();
           scene.current = null;
           setReady(false);
-          setFailed(true);
         }
       });
     preference.addEventListener("change", onPreference);
@@ -63,21 +60,22 @@ export default function PrinterHero() {
     <figure className="printer-hero">
       <div
         className="printer-viewport"
-        role={ready || failed ? "img" : undefined}
-        aria-hidden={!ready && !failed}
+        role={ready ? "img" : undefined}
         aria-label={
           ready
             ? "Animação 3D ilustrativa de uma Bambu Lab A1 com AMS Lite imprimindo, camada por camada, o cogumelo vermelho e branco da nossa galeria."
-            : "Cogumelo vermelho e branco criado pela QRLabs 3D."
+            : undefined
         }
       >
-        {failed && (
+        {!ready && (
           <div className="printer-fallback">
             <Image
               src="/images/cogumelo.jpg"
-              alt=""
+              alt="Cogumelo vermelho e branco impresso em 3D pela QRLabs 3D para decoração de festa"
               fill
               sizes="(max-width: 650px) 85vw, 560px"
+              loading="eager"
+              fetchPriority="high"
             />
           </div>
         )}

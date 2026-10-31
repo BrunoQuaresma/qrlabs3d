@@ -1,10 +1,23 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import PrinterHero from "./components/printer-hero";
 import ScrollReveals from "./components/scroll-reveals";
 import TrackedLink from "./components/tracked-link";
+import { businessStructuredData, site } from "./lib/site";
 
-const instagram = "https://www.instagram.com/qrlabs3d/";
-const whatsapp = `https://wa.me/5581982742579?text=${encodeURIComponent("Olá! Vim pelo site da QRLabs 3D e gostaria de um orçamento para um projeto personalizado.")}`;
+const { instagram, whatsapp } = site;
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: site.title,
+    description: site.description,
+    siteName: site.name,
+    url: "/",
+    locale: "pt_BR",
+    type: "website",
+  },
+};
 
 function PrintDecoration({ item, className }: { item: string; className: string }) {
   return (
@@ -73,15 +86,15 @@ function Brand() {
 const projects = [
   {
     name: "Decoração do seu jeito",
-    description: "Peças únicas para dar vida à sua decoração.",
+    description: "Decoração personalizada em 3D para festas e ambientes, como este cogumelo vermelho e branco.",
     illustration: "decoracao",
     image: "cogumelo",
-    alt: "Cogumelo vermelho com bolinhas brancas em uma decoração de festa",
+    alt: "Cogumelo vermelho com bolinhas brancas impresso em 3D pela QRLabs 3D para decoração de festa",
     url: "DdbqKmrjhpa",
   },
   {
     name: "Miniaturas e presentes",
-    description: "Pequenas peças para decorar e presentear.",
+    description: "Miniaturas impressas em 3D para decorar e dar um presente com a cara de quem recebe.",
     illustration: "miniaturas",
     image: "miniatura",
     alt: "Miniaturas de uma vassoura e uma varinha em suportes pretos",
@@ -89,7 +102,7 @@ const projects = [
   },
   {
     name: "Peças para sua marca",
-    description: "Criações sob medida para o seu negócio.",
+    description: "Displays com QR code e peças personalizadas em 3D para apresentar sua marca.",
     illustration: "personalizados",
     image: "display-qr",
     alt: "Displays personalizados em branco e azul com QR code para Ribs Buffet",
@@ -97,9 +110,43 @@ const projects = [
   },
 ];
 
+const questions = [
+  {
+    question: "O que posso encomendar com impressão 3D?",
+    answer:
+      "Nosso portfólio inclui decoração de festa, miniaturas para presentear e displays com QR code para negócios. Tem uma ideia de presente personalizado, lembrancinha ou outra peça? Envie uma referência para avaliarmos as possibilidades de impressão e personalização.",
+  },
+  {
+    question: "Preciso ter um arquivo 3D pronto?",
+    answer:
+      "Você pode começar a conversa com uma foto de referência, um rascunho ou uma descrição da ideia. Se já tiver um arquivo 3D, envie também. A gente avalia o projeto e combina o que será necessário antes de iniciar a produção.",
+  },
+  {
+    question: "Posso personalizar nome, cor ou tamanho?",
+    answer:
+      "Conte quais detalhes gostaria de mudar: nome, cores, tamanho, tema ou identidade da sua marca. As opções dependem da peça e são combinadas durante o orçamento.",
+  },
+  {
+    question: "Quanto custa uma peça personalizada em 3D?",
+    answer:
+      "O orçamento é feito para cada projeto. Pelo WhatsApp, envie sua referência, o tamanho aproximado, a quantidade desejada e quando precisa da peça. Com esses detalhes, conversamos sobre as possibilidades, o valor e o prazo antes de começar.",
+  },
+  {
+    question: "Como recebo minha encomenda em Recife?",
+    answer:
+      "A QRLabs 3D é um ateliê em Recife, Pernambuco. Informe seu bairro e a data em que precisa da peça na conversa pelo WhatsApp para consultar as opções de recebimento e os prazos disponíveis para seu pedido.",
+  },
+];
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(businessStructuredData).replace(/</g, "\\u003c"),
+        }}
+      />
       <a className="skip-link" href="#conteudo">
         Pular para o conteúdo
       </a>
@@ -111,17 +158,16 @@ export default function Home() {
         <ScrollReveals>
           <section className="hero wrap" aria-labelledby="hero-title">
             <div className="hero-copy">
-              <p className="eyebrow hero-eyebrow" data-reveal="intro">
-                Um pequeno ateliê. Muitas possibilidades.
-              </p>
-              <h1 id="hero-title" data-reveal="intro" data-reveal-order="1">
+              <h1 id="hero-title" className="eyebrow hero-eyebrow" data-reveal="intro">
+                Impressão 3D personalizada em Recife
+              </h1>
+              <p className="hero-title" data-reveal="intro" data-reveal-order="1">
                 <span>Da sua ideia.</span>
                 <span className="hero-title-accent">Do seu jeitinho.</span>
-              </h1>
+              </p>
               <p className="hero-description" data-reveal="intro" data-reveal-order="2">
-                Impressão 3D personalizada, feita em Recife.
-                <br />
-                Conte sua ideia. Vamos criar juntos.
+                Presentes personalizados, miniaturas, decoração e peças para
+                sua marca. Feitos em Recife, a partir da sua ideia.
               </p>
               <div className="hero-actions" data-reveal="intro" data-reveal-order="3">
                 <QuoteButton location="hero" />
@@ -259,7 +305,7 @@ export default function Home() {
                 sizes="(max-width: 700px) 90vw, (max-width: 1280px) 45vw, 535px"
               />
               <span className="photo-label">
-                Paula Ribeiro - Fundadora de QLabs 3D
+                Paula Ribeiro - Fundadora de QRLabs 3D
               </span>
             </div>
             <div className="about-copy" data-reveal data-reveal-order="1">
@@ -279,7 +325,23 @@ export default function Home() {
               <InstagramLink location="about" className="about-social" />
             </div>
           </section>
-          <section className="contact-section" aria-labelledby="contact-title">
+          <section className="faq wrap section-space" id="duvidas" aria-labelledby="faq-title">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">ANTES DE PEDIR SEU ORÇAMENTO</p>
+                <h2 id="faq-title">Como encomendar sua<br /><em>peça personalizada.</em></h2>
+              </div>
+            </div>
+            <div className="faq-list">
+              {questions.map(({ question, answer }) => (
+                <details key={question}>
+                  <summary>{question}</summary>
+                  <p>{answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+          <section className="contact-section" id="contato" aria-labelledby="contact-title">
             <div className="wrap contact-inner">
               <PrintDecoration item="logo-keychain" className="print-keychain" />
               <p className="eyebrow" data-reveal>VAMOS TIRAR ESSA IDEIA DO PAPEL?</p>
@@ -296,7 +358,7 @@ export default function Home() {
         <footer className="site-footer wrap">
           <Brand />
           <p>
-            Impressão 3D com personalidade.
+            Impressão 3D personalizada.
             <br />
             <span>Recife, Pernambuco.</span>
           </p>
@@ -305,7 +367,7 @@ export default function Home() {
               <InstagramIcon /> Instagram
             </TrackedLink>
             <TrackedLink event={{ name: "whatsapp_click", params: { location: "footer" } }} className="text-link" href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da QRLabs 3D (nova aba)">
-              <WhatsAppIcon /> WhatsApp
+              <WhatsAppIcon /> WhatsApp: (81) 98274-2579
             </TrackedLink>
           </div>
           <span className="footer-note">Feito de ideias e afeto.</span>

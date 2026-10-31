@@ -1,6 +1,6 @@
 # QRLabs 3D — Business Context
 
-Last updated: October 30, 2026.
+Last updated: October 31, 2026.
 
 This document gives contributors context for website content, design, and implementation. Keep confirmed business facts separate from suggestions and unresolved details.
 
@@ -24,7 +24,7 @@ The intended visitor journey is:
 2. Explore real examples of its work and customization possibilities.
 3. Start a WhatsApp conversation to discuss an idea and request a quote.
 
-The confirmed conversion goal is a conversation, rather than an online purchase. Specific customer segments and product categories have not yet been defined.
+The confirmed conversion goal is a conversation, rather than an online purchase. On October 31, the owner set the SEO priority: attract people in Recife looking for custom and personalized items that can be made with a 3D printer. The current portfolio supports examples of decoration, miniatures/presents, and branded displays; the complete product and service offering is still to be defined.
 
 ## Contact and primary call to action
 
