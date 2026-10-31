@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 See [BUSINESS_CONTEXT.md](./BUSINESS_CONTEXT.md) for the QRLabs 3D business brief, website goals, WhatsApp contact, and content guidance.
 
-See [DESIGN_DIRECTION.md](./DESIGN_DIRECTION.md) for the current visual direction, interaction and content decisions, rejected explorations, and the provisional gallery layout.
+See [DESIGN_DIRECTION.md](./DESIGN_DIRECTION.md) for the current visual direction, interaction and content decisions, rejected explorations, and the gallery layout.
 
 ## Website
 
@@ -20,12 +20,6 @@ The homepage is a Brazilian Portuguese portfolio and introduction to QRLabs 3D, 
 All project photos are genuine public Instagram posts. The circular Instagram highlight required login and was not used. New portfolio photos can be added locally without connecting the website to Instagram.
 
 The hero is an original procedural 3D illustration of an A1 and AMS Lite printing a mushroom inspired by the gallery, not a CAD model or a recording of a real print. The scene fades in when ready, runs once, and stops with the finished mushroom. Playback pauses offscreen or in a hidden tab. Reduced-motion users see a finished still scene; browsers without WebGL retain the real mushroom photo. The scene uses no external model or texture downloads.
-
-## Design explorations
-
-Open `/designs` to compare eight full-page alternatives. Each option has its own URL under `/designs/[slug]`, responsive layouts, the existing printer animation, and the same WhatsApp and Instagram destinations. The current homepage remains at `/`.
-
-Concept descriptions and the Brazilian/international reference research are in `app/designs/concepts.ts`. Layout variations are scoped in `app/designs/designs.css`. The comparison thumbnails in `public/images/designs/` are screenshots of these prototypes, not competitor assets. Refresh them if the designs change. These review routes are marked `noindex`.
 
 ## Getting Started
 

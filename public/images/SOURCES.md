@@ -15,5 +15,3 @@ The favicon uses the profile image. The original downloaded JPG files retain the
 `atelie-portrait-v2.png` is an AI-edited presentation portrait derived from `atelie.jpg`, with improved lighting and a composed atelier background. The edit replaces the generated printer with a Bambu Lab shipping box and includes a user-requested adjustment to the body silhouette. The original photo and the earlier `atelie-portrait.png` version remain unchanged. Prompts and provenance are recorded in `design/atelier-portrait.json`.
 
 Generated decorative illustrations are documented in `design/service-illustrations.json` and `design/printing-decorations.json`. The logo keychain uses `logo.jpg` as its reference.
-
-`designs/01.webp` through `designs/08.webp` are browser screenshots of the QRLabs 3D design exploration heroes, captured on October 31, 2026. They use the existing local assets and procedural printer scene. No competitor imagery was downloaded or incorporated. Research references and their design takeaways are listed in `app/designs/concepts.ts` and displayed at `/designs#referencias`.
