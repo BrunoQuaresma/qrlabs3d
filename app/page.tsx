@@ -1,6 +1,7 @@
 import Image from "next/image";
 import PrinterHero from "./components/printer-hero";
 import ScrollReveals from "./components/scroll-reveals";
+import TrackedLink from "./components/tracked-link";
 
 const instagram = "https://www.instagram.com/qrlabs3d/";
 const whatsapp = `https://wa.me/5581982742579?text=${encodeURIComponent("Olá! Vim pelo site da QRLabs 3D e gostaria de um orçamento para um projeto personalizado.")}`;
@@ -43,20 +44,20 @@ function WhatsAppIcon() {
     </svg>
   );
 }
-function QuoteButton() {
+function QuoteButton({ location }: { location: "hero" | "contact" }) {
   return (
-    <a className="button button-primary" href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Pedir orçamento pelo WhatsApp (nova aba)">
+    <TrackedLink event={{ name: "whatsapp_click", params: { location } }} className="button button-primary" href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Pedir orçamento pelo WhatsApp (nova aba)">
       <WhatsAppIcon />
       <span>Pedir orçamento</span>
-    </a>
+    </TrackedLink>
   );
 }
-function InstagramLink({ className = "", revealOrder }: { className?: string; revealOrder?: number }) {
+function InstagramLink({ className = "", revealOrder, location }: { className?: string; revealOrder?: number; location: "portfolio" | "about" }) {
   return (
-    <a className={`button button-outline ${className}`} data-reveal={revealOrder !== undefined || undefined} data-reveal-order={revealOrder} href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Ver Instagram da QRLabs 3D (nova aba)">
+    <TrackedLink event={{ name: "instagram_click", params: { location } }} className={`button button-outline ${className}`} data-reveal={revealOrder !== undefined || undefined} data-reveal-order={revealOrder} href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Ver Instagram da QRLabs 3D (nova aba)">
       <InstagramIcon />
       <span>Ver Instagram</span>
-    </a>
+    </TrackedLink>
   );
 }
 function Brand() {
@@ -123,7 +124,7 @@ export default function Home() {
                 Conte sua ideia. Vamos criar juntos.
               </p>
               <div className="hero-actions" data-reveal="intro" data-reveal-order="3">
-                <QuoteButton />
+                <QuoteButton location="hero" />
               </div>
             </div>
             <div className="hero-stage">
@@ -144,11 +145,20 @@ export default function Home() {
                   Grandes <em>possibilidades.</em>
                 </h2>
               </div>
-              <InstagramLink className="portfolio-social" revealOrder={2} />
+              <InstagramLink location="portfolio" className="portfolio-social" revealOrder={2} />
             </div>
             <div className="project-grid">
               {projects.map((project, index) => (
-                <a
+                <TrackedLink
+                  event={{
+                    name: "select_content",
+                    params: {
+                      content_type: "project",
+                      content_id: project.illustration,
+                      content_name: project.name,
+                      location: "portfolio",
+                    },
+                  }}
                   className={`project project-${project.illustration}`}
                   key={project.image}
                   href={`https://www.instagram.com/qrlabs3d/p/${project.url}/`}
@@ -176,7 +186,7 @@ export default function Home() {
                       <p data-reveal data-reveal-order={index + 1}>{project.description}</p>
                     </div>
                   </div>
-                </a>
+                </TrackedLink>
               ))}
             </div>
           </section>
@@ -266,7 +276,7 @@ export default function Home() {
                 personalizar. Cada novo projeto é uma oportunidade de
                 experimentar e dar vida a algo especial.
               </p>
-              <InstagramLink className="about-social" />
+              <InstagramLink location="about" className="about-social" />
             </div>
           </section>
           <section className="contact-section" aria-labelledby="contact-title">
@@ -278,7 +288,7 @@ export default function Home() {
                 <br />A gente dá <em>forma.</em>
               </h2>
               <p data-reveal data-reveal-order="2">Conta pra gente o que você quer criar.</p>
-              <div data-reveal data-reveal-order="3"><QuoteButton /></div>
+              <div data-reveal data-reveal-order="3"><QuoteButton location="contact" /></div>
               <PrintDecoration item="printed-boat" className="print-boat" />
             </div>
           </section>
@@ -291,12 +301,12 @@ export default function Home() {
             <span>Recife, Pernambuco.</span>
           </p>
           <div>
-            <a className="text-link" href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram da QRLabs 3D (nova aba)">
+            <TrackedLink event={{ name: "instagram_click", params: { location: "footer" } }} className="text-link" href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram da QRLabs 3D (nova aba)">
               <InstagramIcon /> Instagram
-            </a>
-            <a className="text-link" href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da QRLabs 3D (nova aba)">
+            </TrackedLink>
+            <TrackedLink event={{ name: "whatsapp_click", params: { location: "footer" } }} className="text-link" href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da QRLabs 3D (nova aba)">
               <WhatsAppIcon /> WhatsApp
-            </a>
+            </TrackedLink>
           </div>
           <span className="footer-note">Feito de ideias e afeto.</span>
         </footer>

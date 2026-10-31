@@ -21,7 +21,36 @@ All project photos are genuine public Instagram posts. The circular Instagram hi
 
 The hero is an original procedural 3D illustration of an A1 and AMS Lite printing a mushroom inspired by the gallery, not a CAD model or a recording of a real print. The scene fades in when ready, runs once, and stops with the finished mushroom. Playback pauses offscreen or in a hidden tab. Reduced-motion users see a finished still scene; browsers without WebGL retain the real mushroom photo. The scene uses no external model or texture downloads.
 
-## Getting Started
+## Google Analytics
+
+GA4 uses the official [Next.js integration](https://nextjs.org/docs/app/guides/third-party-libraries#google-analytics), `@next/third-parties/google`. The root layout loads it once after hydration; pageviews are handled by GA4 rather than manually duplicated.
+
+Copy `.env.example` to `.env.local` and set your web stream's measurement ID:
+
+```dotenv
+NEXT_PUBLIC_GA_ID=G-YOUR_MEASUREMENT_ID
+NEXT_PUBLIC_GA_DEBUG=false
+```
+
+Set `NEXT_PUBLIC_GA_ID` in your hosting provider's production environment before building/deploying. Next.js embeds public environment variables at build time, so changing the ID requires a rebuild. With no ID, no Google Analytics scripts load and custom events do nothing. Local development tracking is off unless `NEXT_PUBLIC_GA_DEBUG=true`; use a test GA4 property for local verification. Leave debug mode false in production.
+
+| Event | Trigger | Parameters |
+| --- | --- | --- |
+| `page_view` | GA4 automatic pageview measurement | GA4 defaults |
+| `whatsapp_click` | Quote buttons and footer WhatsApp link | `location`: `hero`, `contact`, or `footer` |
+| `instagram_click` | Instagram profile links | `location`: `portfolio`, `about`, or `footer` |
+| `select_content` | Portfolio card links | `location`: `portfolio`, `content_type`: `project`, `content_id`, `content_name` |
+
+Custom click events support normal, keyboard, modifier, and middle clicks without delaying navigation. Their payloads contain only the placement and public project identifiers/names, not the WhatsApp number, message text, or destination URL. A WhatsApp click measures contact intent, not a confirmed conversation or sale.
+
+In your GA4 property:
+
+1. Enable Enhanced Measurement, including pageviews and browser history changes. Its built-in `click` and `scroll` events are separate from the custom events above.
+2. Create event-scoped [custom dimensions](https://support.google.com/analytics/answer/14239696) for `location`, `content_id`, and `content_name` to compare placements and projects in reports.
+3. If contact intent is your conversion goal, mark `whatsapp_click` as a key event.
+4. For verification, set `NEXT_PUBLIC_GA_DEBUG=true`, restart the development server, and check GA4 DebugView while clicking each tracked link. Confirm one custom event per activation with the expected parameters. Disable debug mode afterward. Collection in GA4 can only be verified once a real measurement ID is configured.
+
+## Development
 
 First, run the development server:
 

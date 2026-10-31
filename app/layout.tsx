@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { analyticsEnabled, gaDebugMode, gaMeasurementId } from "./lib/analytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,6 +23,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" data-scroll-behavior="smooth">
       <body>{children}</body>
+      {analyticsEnabled && gaMeasurementId && (
+        <GoogleAnalytics gaId={gaMeasurementId} debugMode={gaDebugMode} />
+      )}
     </html>
   );
 }
