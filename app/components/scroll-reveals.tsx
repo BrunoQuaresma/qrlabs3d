@@ -7,7 +7,11 @@ export default function ScrollReveals({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const container = root.current;
-    if (!container || !("IntersectionObserver" in window)) return;
+    if (
+      !container ||
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) return;
 
     const elements = Array.from(
       container.querySelectorAll<HTMLElement>("[data-reveal]"),
@@ -15,24 +19,30 @@ export default function ScrollReveals({ children }: { children: ReactNode }) {
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (!entry.isIntersecting || entry.intersectionRatio < 0.5) continue;
-          const element = entry.target as HTMLElement;
-          element.dataset.revealState = "visible";
-          observer.unobserve(element);
+          if (!entry.isIntersecting) continue;
+          for (const element of entry.target.querySelectorAll<HTMLElement>(
+            '[data-reveal-state="pending"]',
+          )) {
+            element.dataset.revealState = "visible";
+          }
+          observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.5, rootMargin: "0px 0px -64px 0px" },
+      { threshold: 0 },
     );
 
     // Include content already in view, but don't hide sections above a restored scroll position.
     const pending = elements.filter(
-      (element) => element.dataset.reveal !== "intro" &&
-        element.getBoundingClientRect().bottom > 0,
+      (element) => element.getBoundingClientRect().bottom > 0,
     );
+    const sections = new Set<HTMLElement>();
     for (const element of pending) {
+      const section = element.closest("section");
+      if (!section) continue;
       element.dataset.revealState = "pending";
-      observer.observe(element);
+      sections.add(section);
     }
+    for (const section of sections) observer.observe(section);
 
     const revealFocused = (event: FocusEvent) => {
       const target = event.target;
@@ -40,7 +50,6 @@ export default function ScrollReveals({ children }: { children: ReactNode }) {
       for (const element of elements) {
         if (!element.contains(target) && !target.contains(element)) continue;
         element.dataset.revealState = "complete";
-        observer.unobserve(element);
       }
     };
     container.addEventListener("focusin", revealFocused);

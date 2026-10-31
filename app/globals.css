@@ -113,20 +113,16 @@ a:focus-visible {
   --reveal-rest-transform: rotate(0deg);
   --reveal-scale: 1;
 }
-[data-reveal-order="1"] { --reveal-delay: 60ms; }
-[data-reveal-order="2"] { --reveal-delay: 120ms; }
-[data-reveal-order="3"] { --reveal-delay: 180ms; }
+[data-reveal-order="1"] { --reveal-delay: 40ms; }
+[data-reveal-order="2"] { --reveal-delay: 80ms; }
+[data-reveal-order="3"] { --reveal-delay: 120ms; }
 [data-reveal="image"] { --reveal-scale: 0.97; }
 .about-photo[data-reveal] { --reveal-rest-transform: rotate(-3deg); }
 [data-reveal-state="pending"] {
   opacity: 0;
 }
-[data-reveal="intro"],
 [data-reveal-state="visible"] {
-  animation: section-enter 600ms var(--ease-out) var(--reveal-delay) backwards;
-}
-[data-reveal-state="visible"] {
-  animation-delay: calc(120ms + var(--reveal-delay));
+  animation: section-enter 400ms var(--ease-out) var(--reveal-delay) backwards;
 }
 [data-reveal-state="complete"] {
   animation: none;
@@ -141,10 +137,6 @@ a:focus-visible {
     transform: translate3d(0, 0, 0) scale(1) var(--reveal-rest-transform);
   }
 }
-@keyframes section-fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 @media (max-width: 900px) {
   .project [data-reveal],
   .steps > [data-reveal],
@@ -153,13 +145,10 @@ a:focus-visible {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal="intro"],
-  [data-reveal-state="visible"] {
-    animation-name: section-fade;
-    animation-duration: 180ms;
-    animation-delay: 0ms;
+  [data-reveal] {
+    opacity: 1;
+    animation: none;
   }
-  [data-reveal-state="complete"] { animation: none; }
 }
 @media print {
   [data-reveal] {
