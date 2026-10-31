@@ -21,6 +21,12 @@ All project photos are genuine public Instagram posts. The circular Instagram hi
 
 The hero is an original procedural 3D illustration of an A1 and AMS Lite printing a mushroom inspired by the gallery, not a CAD model or a recording of a real print. The scene fades in when ready, runs once, and stops with the finished mushroom. Playback pauses offscreen or in a hidden tab. Reduced-motion users see a finished still scene; browsers without WebGL retain the real mushroom photo. The scene uses no external model or texture downloads.
 
+## Design explorations
+
+Open `/designs` to compare eight full-page alternatives. Each option has its own URL under `/designs/[slug]`, responsive layouts, the existing printer animation, and the same WhatsApp and Instagram destinations. The current homepage remains at `/`.
+
+Concept descriptions and the Brazilian/international reference research are in `app/designs/concepts.ts`. Layout variations are scoped in `app/designs/designs.css`. The comparison thumbnails in `public/images/designs/` are screenshots of these prototypes, not competitor assets. Refresh them if the designs change. These review routes are marked `noindex`.
+
 ## Getting Started
 
 First, run the development server:

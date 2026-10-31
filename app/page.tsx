@@ -52,34 +52,10 @@ function QuoteButton() {
 }
 function InstagramLink({ className = "" }: { className?: string }) {
   return (
-    <a className={`button button-ghost ${className}`} href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Ver Instagram da QRLabs 3D (nova aba)">
+    <a className={`button button-outline ${className}`} href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Ver Instagram da QRLabs 3D (nova aba)">
       <InstagramIcon />
       <span>Ver Instagram</span>
     </a>
-  );
-}
-function StepIcon({ kind }: { kind: "conversation" | "details" | "piece" }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      {kind === "conversation" ? (
-        <>
-          <path d="M7 17H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-6l-5 4v-4Z" />
-          <path d="M7 8h10M7 12h6" />
-        </>
-      ) : kind === "details" ? (
-        <>
-          <path d="M3 6h4m4 0h10M3 12h10m4 0h4M3 18h4m4 0h10" />
-          <circle cx="9" cy="6" r="2" />
-          <circle cx="15" cy="12" r="2" />
-          <circle cx="9" cy="18" r="2" />
-        </>
-      ) : (
-        <>
-          <path d="m12 3 9 5v9l-9 5-9-5V8l9-5Z" />
-          <path d="m3 8 9 5 9-5M12 13v9M7.5 5.5l9 5" />
-        </>
-      )}
-    </svg>
   );
 }
 function Brand() {
@@ -126,34 +102,32 @@ export default function Home() {
         Pular para o conteúdo
       </a>
       <div className="site-shell" id="inicio">
+        <header className="site-topbar wrap">
+          <Brand />
+          <span className="site-location">Recife, Pernambuco</span>
+        </header>
         <main id="conteudo">
           <section className="hero wrap" aria-labelledby="hero-title">
             <div className="hero-copy">
-              <Brand />
+              <p className="eyebrow hero-eyebrow">
+                Um pequeno ateliê. Muitas possibilidades.
+              </p>
               <h1 id="hero-title">
-                Da sua ideia.
-                <br />
-                Do seu{" "}
-                <span className="serif-word">
-                  jeitinho.
-                  <svg viewBox="0 0 410 22" fill="none" aria-hidden="true">
-                    <path
-                      d="M4 14C108 0 278 0 405 10M28 20C168 10 288 10 376 16"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </span>
+                <span>Da sua ideia.</span>
+                <span className="hero-title-accent">Do seu jeitinho.</span>
               </h1>
               <p className="hero-description">
                 Impressão 3D personalizada, feita em Recife.
+                <br />
+                Conte sua ideia. Vamos criar juntos.
               </p>
               <div className="hero-actions">
                 <QuoteButton />
               </div>
             </div>
-            <PrinterHero />
+            <div className="hero-stage">
+              <PrinterHero />
+            </div>
           </section>
           <section
             className="portfolio wrap section-space"
@@ -183,14 +157,6 @@ export default function Home() {
                 >
                   <div className="project-image">
                     <Image
-                      className="project-image-backdrop"
-                      src={`/images/${project.image}.jpg`}
-                      alt=""
-                      aria-hidden="true"
-                      fill
-                      sizes="(max-width: 600px) 90vw, (max-width: 900px) 560px, 360px"
-                    />
-                    <Image
                       className="project-image-photo"
                       src={`/images/${project.image}.jpg`}
                       alt={project.alt}
@@ -199,14 +165,6 @@ export default function Home() {
                     />
                   </div>
                   <div className="project-caption">
-                    <Image
-                      className="project-illustration"
-                      src={`/images/services/${project.illustration}.png`}
-                      alt=""
-                      width={112}
-                      height={112}
-                      sizes="(max-width: 1100px) 88px, 112px"
-                    />
                     <div className="project-copy">
                       <h3>
                         <span className="project-title-base">{project.name}</span>
@@ -231,48 +189,47 @@ export default function Home() {
                 <div>
                   <p className="eyebrow">DO PRIMEIRO “OI” À SUA PEÇA</p>
                   <h2 id="process-title">
-                    Tudo começa com
+                    Começa com
                     <br />
-                    uma boa <em>conversa.</em>
+                    uma <em>conversa.</em>
                   </h2>
                 </div>
                 <p className="process-note">
-                  Pode chegar com uma ideia ou só uma inspiração.
+                  Você não precisa entender de impressão 3D.
+                  <br />
+                  Só precisa de uma ideia para começar.
                 </p>
               </div>
               <ol className="steps">
                 <li>
-                  <div className="step-header">
-                    <span className="step-number" aria-hidden="true">01</span>
-                    <StepIcon kind="conversation" />
+                  <span className="step-number" aria-hidden="true">01</span>
+                  <div className="step-copy">
+                    <h3>Conte sua ideia</h3>
+                    <p>
+                      Mande uma mensagem pelo WhatsApp. Pode ser uma referência,
+                      um rascunho ou aquela ideia que ainda está só na cabeça.
+                    </p>
                   </div>
-                  <h3>Conta sua ideia</h3>
-                  <p>
-                    Conta o que você imaginou. Uma foto, desenho ou referência
-                    já ajuda a começar a conversa.
-                  </p>
                 </li>
                 <li>
-                  <div className="step-header">
-                    <span className="step-number" aria-hidden="true">02</span>
-                    <StepIcon kind="details" />
+                  <span className="step-number" aria-hidden="true">02</span>
+                  <div className="step-copy">
+                    <h3>A gente combina os detalhes</h3>
+                    <p>
+                      Conversamos sobre a peça, as possibilidades e o orçamento.
+                      Combinamos cada detalhe antes de começar a impressão.
+                    </p>
                   </div>
-                  <h3>A gente pensa junto</h3>
-                  <p>
-                    A gente combina as possibilidades, os detalhes e o orçamento
-                    para criar uma peça do seu jeito.
-                  </p>
                 </li>
                 <li>
-                  <div className="step-header">
-                    <span className="step-number" aria-hidden="true">03</span>
-                    <StepIcon kind="piece" />
+                  <span className="step-number" aria-hidden="true">03</span>
+                  <div className="step-copy">
+                    <h3>A ideia ganha forma</h3>
+                    <p>
+                      Com tudo combinado, a impressão começa. Camada por camada,
+                      sua ideia ganha forma e vira uma peça feita para você.
+                    </p>
                   </div>
-                  <h3>A ideia ganha forma</h3>
-                  <p>
-                    Com tudo combinado, a impressão começa. Camada por camada,
-                    sua ideia vira uma peça de verdade.
-                  </p>
                 </li>
               </ol>
             </div>
@@ -284,16 +241,15 @@ export default function Home() {
           >
             <div className="about-photo">
               <Image
-                src="/images/atelie-portrait-v2.png"
-                alt="Retrato de apresentação da QRLabs 3D, com uma caixa Bambu Lab ao fundo"
-                width={1448}
-                height={1086}
-                sizes="(max-width: 650px) 90vw, 380px"
+                src="/images/paula-ribeiro-founder-v2.png"
+                alt="Paula Ribeiro, fundadora da QRLabs 3D, sorrindo em um ateliê criativo"
+                width={1355}
+                height={1160}
+                sizes="(max-width: 700px) 90vw, (max-width: 1280px) 45vw, 535px"
               />
-              <span className="photo-label handwritten">
-                um começo cheio de ideias ♡
+              <span className="photo-label">
+                Paula Ribeiro - Fundadora de QLabs 3D
               </span>
-              <PrintDecoration item="filament-spool" className="print-spool" />
             </div>
             <div className="about-copy">
               <p className="eyebrow">PRAZER, QRLABS 3D</p>

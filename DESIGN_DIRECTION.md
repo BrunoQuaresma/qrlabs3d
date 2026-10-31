@@ -1,15 +1,16 @@
 # QRLabs 3D design direction
 
-Last updated: October 30, 2026.
+Last updated: October 31, 2026.
 
 The website should make custom 3D printing feel tangible, creative, and approachable, then invite visitors to request a quote through WhatsApp. This document records the current design decisions and the areas still open for exploration. Business facts, contact details, and unconfirmed service capabilities live in [BUSINESS_CONTEXT.md](./BUSINESS_CONTEXT.md).
 
-The gallery layout is provisional. Its current arrangement is an implementation to evaluate, not an approved template for future work.
+The gallery now builds on option 1's editorial layout, with the owner's adjustments recorded below.
 
 ## Hero and page structure
 
 - Keep the 3D printing animation as the main hero visual and use the actual QRLabs 3D logo.
-- Keep the current direction without a navbar.
+- Use option 1's simple top bar: logo and brand on the left, “Recife, Pernambuco” on the right, without navigation links.
+- Use option 1's hero copy and composition: an introductory eyebrow, the serif “Da sua ideia. Do seu jeitinho.” headline, supporting copy and quote action beside the printer. Stack the copy and printer on mobile. Omit the hero's bottom strip, creations link, and caption beneath the printer.
 - Align the hero to the same content container as the other sections. Improve text and printer proportions within that width rather than widening the hero independently.
 - Give the headline, supporting text, and button label enough visual weight. Button text should remain proportionate to its surrounding padding on mobile as well as desktop.
 
@@ -25,9 +26,9 @@ Keep colors and gradients centralized in the semantic tokens in `app/globals.css
 
 Use real project photos to show completed work, supported by tactile 3D illustrations. Overlapping illustrations and printing-related objects are part of the desired visual language. The rejected prototype designs do not constitute a rejection of 3D styling.
 
-Decorative objects should be recognizable and connected to the business. The current selection is a filament spool, a printed boat, and a keychain based on the QRLabs 3D logo. These replaced generic stars and an unsuccessful painting-tools illustration.
+Decorative objects should be recognizable and connected to the business. The current selection is a printed boat and a keychain based on the QRLabs 3D logo. The filament decoration has been removed from the founder portrait. These replaced generic stars and an unsuccessful painting-tools illustration.
 
-Keep decorative parallax subtle and clear of text and actions. Preserve the existing reduced-motion behavior, keyboard focus states, and printer image fallback when changing the design. The printer scene's playback and fallback behavior are documented in [README.md](./README.md#website).
+Keep decorative parallax noticeable on desktop and clear of text and actions. Preserve the existing reduced-motion behavior, keyboard focus states, and printer image fallback when changing the design. The printer scene's playback and fallback behavior are documented in [README.md](./README.md#website).
 
 ## Actions and links
 
@@ -36,11 +37,11 @@ Keep decorative parallax subtle and clear of text and actions. Preserve the exis
 | Primary quote action | Pedir orçamento | Brand-gradient button with WhatsApp icon |
 | Instagram profile | Ver Instagram | Ghost button with Instagram icon |
 
-Use these labels and treatments consistently wherever the same action appears. Keep hover and keyboard focus feedback clear, and maintain readable labels across gradient states. The short quote label refines the earlier suggested wording in the business brief; the destination remains WhatsApp.
+Use these labels and treatments consistently wherever the same action appears. Buttons use the fully rounded shape from option 1, including its outlined WhatsApp icon for quote actions. Keep hover and keyboard focus feedback clear, and maintain readable labels across gradient states. The short quote label refines the earlier suggested wording in the business brief; the destination remains WhatsApp.
 
 ## Gallery direction and provisional layout
 
-The gallery should connect real work to customization possibilities. Keep the photographed objects sharp and recognizable, crop carefully, and use a blurred version of the photo to fill unused image space where appropriate.
+The gallery should connect real work to customization possibilities. Keep the photographed objects sharp and recognizable, and crop them to fill their frames without blurred image padding.
 
 Recent requests established these presentation preferences:
 
@@ -49,15 +50,21 @@ Recent requests established these presentation preferences:
 - Keep gallery titles neutral at rest, with a gradient on hover or focus, and retain photo zoom feedback.
 - Use the Instagram ghost button near the section heading instead of duplicated introductory copy and a second promotional link below the gallery.
 
-**The spatial arrangement remains undecided.** The current implementation places an overlapping illustration on the left and a title and description to its right, beneath each photo. It aims for one-line titles and balanced two-line descriptions with a shared text-column width. These are characteristics of the current experiment, not fixed requirements. Future proposals may change placement, overlap, proportions, and line counts.
+Use option 1's serif section heading and straightforward captions beneath the photos, while retaining the current brand colors. The three desktop cards have equal widths and aligned image and caption edges. Use square, filled photo frames to limit excessive cropping of the existing images. Omit caption dividers, overlapping illustrations, staggered positions, and mobile offsets. Stack the cards evenly on smaller screens.
 
 The current headings are “Decoração do seu jeito,” “Miniaturas e presentes,” and “Peças para sua marca.” They describe the current examples; they do not settle the business's full service offering or target audience.
 
 ## Process and atelier introduction
 
+Instagram buttons use a neutral outline and subtle neutral hover fill. The founder portrait has a white printed-photo border and a soft layered shadow for depth, while retaining its slight rotation.
+
+On desktop (above 900px), floating print decorations travel from -64px to +64px and rotate from -6° to +6° as they scroll through the viewport. Keep the smaller-screen motion restrained and respect reduced-motion preferences.
+
 Present “DO PRIMEIRO ‘OI’ À SUA PEÇA” as an open sequence of steps, without individual card backgrounds or borders. Keep the introduction integrated with the section rather than using a tilted italic note and decorative arrow.
 
-Keep the atelier description as one paragraph. The current portrait is an AI-edited version of the original photo, with a Bambu Lab shipping box replacing an inaccurate generated printer. Preserve original assets and keep edit provenance in the source records.
+Use option 1's editorial process layout and copy: a serif “Começa com uma conversa.” heading with the introductory sentence alongside it, three equal columns with large italic step numbers, thin rules, and text below. On mobile, stack the steps with numbers beside the copy. Retain the current section background gradient.
+
+Use option 1's equal-column atelier layout, serif heading, and existing one-paragraph description. Keep the portrait free of the filament spool decoration. The photo caption reads “Paula Ribeiro - Fundadora de QLabs 3D”. The current portrait is generated from five owner-provided identity references, with natural lighting and a quiet creative atelier background. Preserve previous portraits and keep the prompt and provenance in `design/paula-founder-portrait.json`.
 
 ## Rejected explorations
 
@@ -77,4 +84,4 @@ Asset sources and generation records:
 - [Printing decorations](./design/printing-decorations.json)
 - [Atelier portrait](./design/atelier-portrait.json)
 
-The gallery composition needs further review. The reasons behind the six rejected prototypes remain open. Customer priorities, fulfillment, materials, and other service promises remain the business questions listed in the business brief.
+The reasons behind the six earlier rejected prototypes remain open. Customer priorities, fulfillment, materials, and other service promises remain the business questions listed in the business brief.
