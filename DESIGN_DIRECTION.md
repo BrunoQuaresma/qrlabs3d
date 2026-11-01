@@ -1,6 +1,6 @@
 # QRLabs 3D design direction
 
-Last updated: October 31, 2026.
+Last updated: November 1, 2026.
 
 The website should make custom 3D printing feel tangible, creative, and approachable, then invite visitors to request a quote through WhatsApp. This document records the current design decisions and the areas still open for exploration. Business facts, contact details, and unconfirmed service capabilities live in [BUSINESS_CONTEXT.md](./BUSINESS_CONTEXT.md).
 
@@ -28,7 +28,7 @@ Use real project photos to show completed work, supported by tactile 3D illustra
 
 Decorative objects should be recognizable and connected to the business. The current selection is a printed boat and a keychain based on the QRLabs 3D logo. The filament decoration has been removed from the founder portrait. These replaced generic stars and an unsuccessful painting-tools illustration.
 
-Keep decorative parallax noticeable on desktop and clear of text and actions. Preserve the existing reduced-motion behavior, keyboard focus states, and printer image fallback when changing the design. The printer scene's playback and fallback behavior are documented in [README.md](./README.md#website).
+Keep decorative parallax noticeable on desktop and clear of text and actions. Preserve the existing reduced-motion behavior and keyboard focus states when changing the design. Keep the hero empty until the printer is ready, without a placeholder photo or background glow. The printer scene's playback and loading behavior are documented in [README.md](./README.md#website).
 
 ## Actions and links
 

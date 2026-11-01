@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { PrinterScene } from "./printer-scene";
 
@@ -37,7 +36,6 @@ export default function PrinterHero() {
         setReady(true);
       })
       .catch(() => {
-        // Keep the genuine project photo if WebGL or the async chunk is unavailable.
         if (!cancelled) {
           scene.current?.dispose();
           scene.current = null;
@@ -67,18 +65,6 @@ export default function PrinterHero() {
             : undefined
         }
       >
-        {!ready && (
-          <div className="printer-fallback">
-            <Image
-              src="/images/cogumelo.jpg"
-              alt="Cogumelo vermelho e branco impresso em 3D pela QRLabs 3D para decoração de festa"
-              fill
-              sizes="(max-width: 650px) 85vw, 560px"
-              loading="eager"
-              fetchPriority="high"
-            />
-          </div>
-        )}
         <div
           className={`printer-canvas${ready ? " is-ready" : ""}`}
           ref={host}

@@ -326,17 +326,26 @@ export default function Home() {
             </div>
           </section>
           <section className="faq wrap section-space" id="duvidas" aria-labelledby="faq-title">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">ANTES DE PEDIR SEU ORÇAMENTO</p>
-                <h2 id="faq-title">Como encomendar sua<br /><em>peça personalizada.</em></h2>
-              </div>
+            <div className="faq-heading">
+              <p className="eyebrow">ANTES DE PEDIR SEU ORÇAMENTO</p>
+              <h2 id="faq-title">Como encomendar sua <em>peça personalizada.</em></h2>
+              <p className="faq-intro">Da primeira ideia aos últimos detalhes, a gente te ajuda a começar.</p>
             </div>
             <div className="faq-list">
               {questions.map(({ question, answer }) => (
                 <details key={question}>
-                  <summary>{question}</summary>
-                  <p>{answer}</p>
+                  <summary>
+                    <span>{question}</span>
+                    <span className="faq-toggle" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                        <path d="M5 12h14" />
+                        <path className="faq-toggle-vertical" d="M12 5v14" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="faq-answer">
+                    <p>{answer}</p>
+                  </div>
                 </details>
               ))}
             </div>

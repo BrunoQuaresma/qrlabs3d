@@ -13,13 +13,13 @@ The homepage is a Brazilian Portuguese portfolio and introduction to QRLabs 3D, 
 - Edit the content, portfolio entries, and contact links in `app/page.tsx`.
 - Edit colors and responsive layouts in `app/globals.css`.
 - Edit shared business details, the canonical domain, title, and description in `app/lib/site.ts`; metadata is applied in `app/layout.tsx` and `app/page.tsx`.
-- Edit the stylized A1 + AMS Lite model and printing cycle in `app/components/printer-scene.ts`; playback, reduced motion, and image fallback are handled in `app/components/printer-hero.tsx`.
+- Edit the stylized A1 + AMS Lite model and printing cycle in `app/components/printer-scene.ts`; playback, reduced motion, and loading visibility are handled in `app/components/printer-hero.tsx`.
 - Local Instagram images and their source references are in `public/images/`.
 - `npm run build` verifies the production build and TypeScript.
 
 All project photos are genuine public Instagram posts. The circular Instagram highlight required login and was not used. New portfolio photos can be added locally without connecting the website to Instagram.
 
-The hero is an original procedural 3D illustration of an A1 and AMS Lite printing a mushroom inspired by the gallery, not a CAD model or a recording of a real print. The scene fades in when ready, runs once, and stops with the finished mushroom. Playback pauses offscreen or in a hidden tab. Reduced-motion users see a finished still scene. The real mushroom photo is server-rendered and loads eagerly while the scene initializes; it also remains available without JavaScript or WebGL. The scene uses no external model or texture downloads.
+The hero is an original procedural 3D illustration of an A1 and AMS Lite printing a mushroom inspired by the gallery, not a CAD model or a recording of a real print. The scene fades in when ready, runs once, and stops with the finished mushroom. Playback pauses offscreen or in a hidden tab. Reduced-motion users see a finished still scene. The hero reserves space but stays empty until the scene is ready; no placeholder image appears during loading or when JavaScript or WebGL is unavailable. The scene uses no external model or texture downloads.
 
 ## SEO audit — October 31, 2026
 
@@ -35,7 +35,7 @@ The audit covered repository code, a production build, the public Vercel homepag
 | No sitemap or robots file. | Added `/sitemap.xml` with the homepage and three genuine project images, plus `/robots.txt` linking to it. No fabricated modification dates. |
 | No machine-readable business identity. | Added connected Organization, WebSite, and Service JSON-LD with the confirmed city, phone, Instagram, and WhatsApp contact. |
 | No application-level preview indexing policy. | Vercel preview/development builds emit `noindex, nofollow` and omit sitemap entries; crawlers can still read the noindex directive. |
-| Hero photo appeared only after a JavaScript failure. | Rendered a descriptive, eagerly loaded photo in the initial HTML, replaced when the 3D scene is ready. |
+| Hero loading briefly displayed a mushroom photo. | Removed the placeholder; the reserved area stays empty until the printer scene fades in. |
 | Brand spelling differed in the founder caption. | Corrected it to QRLabs 3D. |
 | Custom domain does not resolve. | **External blocker:** Vercel reported `misconfigured: true`, external nameservers, and no A/CNAME values. See the DNS fix below. |
 | Both the custom and Vercel domains are attached without a redirect. | Canonical tags are prepared. Once the custom domain works, configure a permanent redirect from the Vercel alias to consolidate public entry points. |
